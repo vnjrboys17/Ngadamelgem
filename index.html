@@ -43,7 +43,7 @@
           </div>
           <div>
             <p class="text-[10px] text-emerald-700 font-bold tracking-wider uppercase">Halo, Penjelajah!</p>
-            <h2 class="text-sm font-bold text-gray-800">Sultan Ageng</h2>
+            <h2 class="text-sm font-bold text-gray-800">Aceng</h2>
           </div>
         </div>
         
@@ -309,18 +309,16 @@
         }
     };
 
-    // LOCAL STORAGE INIT
-    if (!localStorage.getItem('userXP') || !localStorage.getItem('unlockedPlants')) {
-        localStorage.setItem('userXP', '0'); 
-        localStorage.setItem('userLevel', 'Ambassador Tunas');
-        localStorage.setItem('unlockedPlants', JSON.stringify([])); 
-    }
+    // SISTEM RESET OTOMATIS (Setiap Refresh / Buka Web, Kembali ke 0)
+    sessionStorage.setItem('userXP', '0'); 
+    sessionStorage.setItem('userLevel', 'Ambassador Tunas');
+    sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
 
     // FUNGSI UPDATE UI GAMIFIKASI
     function syncGamificationUI() {
-        const xp = parseInt(localStorage.getItem('userXP'));
-        const level = localStorage.getItem('userLevel');
-        const unlocked = JSON.parse(localStorage.getItem('unlockedPlants'));
+        const xp = parseInt(sessionStorage.getItem('userXP'));
+        const level = sessionStorage.getItem('userLevel');
+        const unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
 
         document.getElementById('xp-text').innerText = `${xp} / 500 XP`;
         document.getElementById('xp-bar').style.width = `${(xp / 500) * 100}%`;
@@ -380,13 +378,13 @@
 
     // FUNGSI REWARD
     function rewardNewScan(plantId) {
-        let unlocked = JSON.parse(localStorage.getItem('unlockedPlants'));
+        let unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
         if (!unlocked.includes(plantId)) {
             unlocked.push(plantId);
-            localStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
-            let currentXP = parseInt(localStorage.getItem('userXP')) + 100;
-            if (currentXP >= 500) { currentXP = 500; localStorage.setItem('userLevel', 'Mahaguru Botani'); }
-            localStorage.setItem('userXP', currentXP.toString());
+            sessionStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
+            let currentXP = parseInt(sessionStorage.getItem('userXP')) + 100;
+            if (currentXP >= 500) { currentXP = 500; sessionStorage.setItem('userLevel', 'Mahaguru Botani'); }
+            sessionStorage.setItem('userXP', currentXP.toString());
             
             // Tampilkan Modal Reward
             document.getElementById('reward-modal').classList.remove('hidden');
@@ -454,10 +452,6 @@
 
     // INISIALISASI SAAT HALAMAN DIBUKA (TERMASUK DEEP LINKING)
     document.addEventListener("DOMContentLoaded", () => {
-        // Trik Reset Manual (Hapus // di dua baris bawah ini jika ingin reset game ke awal)
-        // localStorage.clear();
-        // location.reload();
-
         const modelViewer = document.getElementById('plant-model');
         const scaleButtons = document.querySelectorAll('.btn-scale');
 
