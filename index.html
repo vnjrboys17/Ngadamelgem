@@ -238,6 +238,30 @@
       </div>
     </div>
 
+    <div id="reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+      <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
+        
+        <div class="w-20 h-20 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-emerald-100">
+          <span class="material-symbols-outlined text-5xl text-amber-500 animate-bounce">workspace_premium</span>
+        </div>
+        
+        <h3 class="text-xl font-extrabold text-gray-800 mb-1">Hebat!</h3>
+        <p class="text-[11px] text-gray-500 mb-5 leading-relaxed px-2">Tanaman baru berhasil ditemukan dan ditambahkan ke TanamanDex kamu.</p>
+        
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-xl py-2 mb-6 shadow-sm">
+          <p class="text-amber-700 font-extrabold text-sm flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-base">star</span>
+            +100 XP
+          </p>
+        </div>
+        
+        <button onclick="document.getElementById('reward-modal').classList.add('hidden')" class="w-full py-3 bg-gradient-to-r from-[#2A5C43] to-[#1e4531] text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
+          Lanjut Lihat AR
+        </button>
+
+      </div>
+    </div>
+
     <nav id="bottom-nav" class="bg-white border-t border-gray-100 flex justify-around items-center py-3 px-6 sticky bottom-0 z-40 rounded-b-3xl">
       <button id="nav-home" onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-0.5 text-emerald-600 font-bold transform scale-105">
         <span class="material-symbols-outlined text-2xl font-fill">home</span>
@@ -363,7 +387,10 @@
             let currentXP = parseInt(localStorage.getItem('userXP')) + 100;
             if (currentXP >= 500) { currentXP = 500; localStorage.setItem('userLevel', 'Mahaguru Botani'); }
             localStorage.setItem('userXP', currentXP.toString());
-            alert(`🎉 Hebat! Tanaman baru ditemukan! Kamu naik level & dapat +100 XP.`);
+            
+            // Tampilkan Modal Reward
+            document.getElementById('reward-modal').classList.remove('hidden');
+            
             syncGamificationUI();
         }
     }
@@ -428,8 +455,8 @@
     // INISIALISASI SAAT HALAMAN DIBUKA (TERMASUK DEEP LINKING)
     document.addEventListener("DOMContentLoaded", () => {
         // Trik Reset Manual (Hapus // di dua baris bawah ini jika ingin reset game ke awal)
-         localStorage.clear();
-         location.reload();
+        // localStorage.clear();
+        // location.reload();
 
         const modelViewer = document.getElementById('plant-model');
         const scaleButtons = document.querySelectorAll('.btn-scale');
@@ -453,12 +480,11 @@
         
         syncGamificationUI();
 
-        // DEEP LINKING CHECK (Membaca parameter di URL saat pertama kali dibuka)
+        // DEEP LINKING CHECK
         const urlParams = new URLSearchParams(window.location.search);
         const plantId = urlParams.get('plant');
         
         if (plantId && plantDatabase[plantId]) {
-            // Jika ada parameter ?plant= di URL, catat penemuan dan langsung buka
             rewardNewScan(plantId);
             window.history.replaceState({ view: 'home' }, '', window.location.pathname);
             window.history.pushState({ view: 'detail', plantId: plantId }, '', '?plant=' + plantId);
