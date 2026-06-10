@@ -292,20 +292,42 @@
 
     // 2. SISTEM PENYIMPANAN LEVEL & KOLEKSI
     if (!localStorage.getItem('userXP')) {
-        localStorage.setItem('userXP', '240');
-        localStorage.setItem('userLevel', 'Ambassador Tunas');
-        localStorage.setItem('unlockedPlants', JSON.stringify(['palm']));
+            localStorage.setItem('userXP', '0'); // Reset XP ke 0
+            localStorage.setItem('userLevel', 'Ambassador Tunas');
+            localStorage.setItem('unlockedPlants', JSON.stringify([])); // Kosongkan, berarti semua terkunci
+        }
     }
 
     function syncGamificationUI() {
-        const xp = parseInt(localStorage.getItem('userXP'));
-        const level = localStorage.getItem('userLevel');
-        const unlocked = JSON.parse(localStorage.getItem('unlockedPlants'));
+            const xp = parseInt(localStorage.getItem('userXP'));
+            const level = localStorage.getItem('userLevel');
+            const unlocked = JSON.parse(localStorage.getItem('unlockedPlants'));
 
-        document.getElementById('xp-text').innerText = `${xp} / 500 XP`;
-        document.getElementById('xp-bar').style.width = `${(xp / 500) * 100}%`;
-        document.getElementById('user-level').innerText = level;
-        document.getElementById('dex-count').innerText = `${unlocked.length} / 4 DITEMUKAN`;
+            document.getElementById('xp-text').innerText = `${xp} / 500 XP`;
+            document.getElementById('xp-bar').style.width = `${(xp / 500) * 100}%`;
+            document.getElementById('user-level').innerText = level;
+            document.getElementById('dex-count').innerText = `${unlocked.length} / 4 DITEMUKAN`;
+
+            // LOGIKA UNLOCK MANGGA
+            const slotMangga = document.getElementById('slot-mangga');
+            const cardDexMangga = document.getElementById('card-dex-mangga');
+
+            if (unlocked.includes('mangga')) {
+                // ... (biarkan kode unlock mangga yang sudah ada di sini) ...
+            } else {
+                // KUNCI MANGGA (Opsional: Pastikan style terkunci)
+                slotMangga.classList.add('opacity-50');
+                slotMangga.onclick = () => alert("Tanaman ini terkunci! Temukan QR-nya untuk membuka.");
+            }
+
+            // LOGIKA UNLOCK PALM (Baru ditambahkan)
+            if (unlocked.includes('palm')) {
+                // Buka kunci visual untuk palm
+            } else {
+                // KUNCI PALM
+                // Tambahkan kode untuk mengunci slot palm di sini jika ingin palm juga bisa terkunci
+            }
+        }
 
         if (unlocked.includes('mangga')) {
             const slotMangga = document.getElementById('slot-mangga');
