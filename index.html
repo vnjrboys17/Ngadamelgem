@@ -1,239 +1,244 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TangkalNaonAR - Beranda</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TangkalNaonAR - Beranda</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f2f5f3;
-        }
-        /* Menyembunyikan scrollbar bawaan browser */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-    <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f2f5f3;
+    }
     
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    /* Menyembunyikan scrollbar bawaan browser */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
-    <div class="w-full max-w-md bg-[#FAFBFB] min-h-screen sm:min-h-[840px] shadow-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between relative border border-gray-100">
+  <div class="w-full max-w-md bg-[#FAFBFB] min-h-screen sm:min-h-[840px] shadow-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between relative border border-gray-100">
+    
+    <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-900/10 to-transparent pointer-events-none"></div>
+
+    <header class="px-6 pt-6 pb-4 bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-700 to-teal-600 border-2 border-white shadow-md flex items-center justify-center text-white font-bold text-base tracking-wide">
+            UN
+          </div>
+          <div>
+            <p class="text-[10px] text-emerald-700 font-bold tracking-wider uppercase">Halo, Penjelajah!</p>
+            <h2 class="text-sm font-bold text-gray-800">Sultan Ageng</h2>
+          </div>
+        </div>
         
-        <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-900/10 to-transparent pointer-events-none"></div>
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+          <span class="material-symbols-outlined text-amber-600 text-sm font-bold">military_tech</span>
+          <span id="user-level" class="text-[9px] font-bold text-amber-800 tracking-wide uppercase">Ambassador Tunas</span>
+        </div>
+      </div>
 
-        <header class="px-6 pt-6 pb-4 bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-700 to-teal-600 border-2 border-white shadow-md flex items-center justify-center text-white font-bold text-base tracking-wide">
-                        UN
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-emerald-700 font-bold tracking-wider uppercase">Halo, Penjelajah!</p>
-                        <h2 class="text-sm font-bold text-gray-800">Sultan Ageng</h2>
-                    </div>
-                </div>
-                
-                <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-                    <span class="material-symbols-outlined text-amber-600 text-sm font-bold">military_tech</span>
-                    <span id="user-level" class="text-[9px] font-bold text-amber-800 tracking-wide uppercase">Ambassador Tunas</span>
-                </div>
+      <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-100">
+        <div class="flex justify-between items-center text-[10px] font-bold text-gray-500 mb-1.5">
+          <span class="flex items-center gap-1 text-gray-600">
+            <span class="material-symbols-outlined text-xs text-amber-500">star</span> 
+            Poin Pengalaman (XP)
+          </span>
+          <span id="xp-text" class="tracking-wider text-emerald-800 font-extrabold">240 / 500 XP</span>
+        </div>
+        <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner p-[1px]">
+          <div id="xp-bar" class="h-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full transition-all duration-700 shadow-sm" style="width: 48%"></div>
+        </div>
+      </div>
+    </header>
+
+    <main id="home-view" class="view-section flex-1 overflow-y-auto px-6 py-5 space-y-6 no-scrollbar z-10">
+      
+      <div class="relative rounded-2xl overflow-hidden shadow-md border border-emerald-950/10 group transition-transform duration-300 active:scale-98">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop" alt="Hutan" class="w-full h-36 object-cover transform group-hover:scale-105 transition-transform duration-700">
+        
+        <div class="absolute inset-0 z-20 flex flex-col justify-between p-4">
+          <div class="self-start bg-emerald-600/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-widest flex items-center gap-1 border border-emerald-500/30 shadow-sm">
+            <span class="material-symbols-outlined text-[10px] animate-pulse">target</span> Misi Berjalan
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-white leading-tight mb-1">Berburu Spesies Pohon Lokal</h3>
+            <p class="text-[10px] text-gray-200 font-light leading-relaxed">Pindai kode QR <b>Pohon Mangga</b> atau <b>Palem Raja</b> di sekitar kampus Untirta Sindangsari hari ini untuk klaim bonus +100 XP!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center justify-center py-6 bg-white rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
+        <div class="absolute w-44 h-44 bg-emerald-100 rounded-full animate-ping opacity-25" style="animation-duration: 2.5s;"></div>
+        <div class="absolute w-56 h-56 bg-teal-50 rounded-full animate-pulse opacity-40"></div>
+        
+        <div class="z-10 w-32 h-32 rounded-full bg-emerald-50 flex items-center justify-center border border-emerald-100 shadow-inner p-2">
+          <button id="main-scan-btn" class="w-full h-full rounded-full bg-gradient-to-br from-[#2A5C43] via-[#1E4632] to-[#143022] shadow-xl shadow-emerald-950/40 flex flex-col items-center justify-center text-white gap-1 hover:brightness-110 active:scale-95 transition-all group">
+            <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform duration-300">qr_code_scanner</span>
+            <span class="text-[9px] font-extrabold tracking-widest uppercase">Mulai Scan</span>
+          </button>
+        </div>
+        <h4 class="text-xs font-bold text-gray-700 mt-4 z-10 tracking-wide">Pindai QR Code Pohon</h4>
+        <p class="text-[10px] text-gray-400 mt-0.5 z-10 text-center px-4">Dekatkan kamera HP pada stiker barcode fisik tanaman</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+        <div class="flex justify-between items-center">
+          <div>
+            <h4 class="text-xs font-bold text-gray-800 tracking-wide">Koleksi TanamanDex</h4>
+            <p class="text-[10px] text-gray-400 mt-0.5">Daftar flora yang berhasil kamu taklukkan</p>
+          </div>
+          <span id="dex-count" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded-full border border-emerald-100/80">
+            1 / 4 DITEMUKAN
+          </span>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3 pt-1">
+          <div class="flex flex-col items-center gap-1.5 group cursor-pointer">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-400 shadow-sm flex items-center justify-center text-emerald-700 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-2xl">potted_plant</span>
             </div>
+            <span class="text-[9px] font-bold text-gray-600 truncate w-full text-center">Palem Raja</span>
+          </div>
 
-            <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-100">
-                <div class="flex justify-between items-center text-[10px] font-bold text-gray-500 mb-1.5">
-                    <span class="flex items-center gap-1 text-gray-600">
-                        <span class="material-symbols-outlined text-xs text-amber-500">star</span> 
-                        Poin Pengalaman (XP)
-                    </span>
-                    <span id="xp-text" class="tracking-wider text-emerald-800 font-extrabold">240 / 500 XP</span>
-                </div>
-                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner p-[1px]">
-                    <div id="xp-bar" class="h-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full transition-all duration-700 shadow-sm" style="width: 48%"></div>
-                </div>
+          <div class="flex flex-col items-center gap-1.5 opacity-50">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
+              <span class="material-symbols-outlined text-base">lock</span>
             </div>
-        </header>
+            <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
+          </div>
 
-        <main id="home-view" class="view-section flex-1 overflow-y-auto px-6 py-5 space-y-6 no-scrollbar z-10">
-
-            <div class="relative rounded-2xl overflow-hidden shadow-md border border-emerald-950/10 group transition-transform duration-300 active:scale-98">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 z-10"></div>
-                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600&auto=format&fit=crop" alt="Hutan" class="w-full h-36 object-cover transform group-hover:scale-105 transition-transform duration-700">
-                
-                <div class="absolute inset-0 z-20 flex flex-col justify-between p-4">
-                    <div class="self-start bg-emerald-600/90 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-widest flex items-center gap-1 border border-emerald-500/30 shadow-sm">
-                        <span class="material-symbols-outlined text-[10px] animate-pulse">target</span> Misi Berjalan
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-bold text-white leading-tight mb-1">Berburu Spesies Pohon Lokal</h3>
-                        <p class="text-[10px] text-gray-200 font-light leading-relaxed">Pindai kode QR <b>Pohon Mangga</b> atau <b>Palem Raja</b> di sekitar kampus Untirta Sindangsari hari ini untuk klaim bonus +100 XP!</p>
-                    </div>
-                </div>
+          <div class="flex flex-col items-center gap-1.5 opacity-50">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
+              <span class="material-symbols-outlined text-base">lock</span>
             </div>
+            <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
+          </div>
 
-            <div class="flex flex-col items-center justify-center py-6 bg-white rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
-                <div class="absolute w-44 h-44 bg-emerald-100 rounded-full animate-ping opacity-25" style="animation-duration: 2.5s;"></div>
-                <div class="absolute w-56 h-56 bg-teal-50 rounded-full animate-pulse opacity-40"></div>
-                
-                <div class="z-10 w-32 h-32 rounded-full bg-emerald-50 flex items-center justify-center border border-emerald-100 shadow-inner p-2">
-                    <button id="main-scan-btn" class="w-full h-full rounded-full bg-gradient-to-br from-[#2A5C43] via-[#1E4632] to-[#143022] shadow-xl shadow-emerald-950/40 flex flex-col items-center justify-center text-white gap-1 hover:brightness-110 active:scale-95 transition-all group">
-                        <span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform duration-300">qr_code_scanner</span>
-                        <span class="text-[9px] font-extrabold tracking-widest uppercase">Mulai Scan</span>
-                    </button>
-                </div>
-                <h4 class="text-xs font-bold text-gray-700 mt-4 z-10 tracking-wide">Pindai QR Code Pohon</h4>
-                <p class="text-[10px] text-gray-400 mt-0.5 z-10 text-center px-4">Dekatkan kamera HP pada stiker barcode fisik tanaman</p>
+          <div class="flex flex-col items-center gap-1.5 opacity-50">
+            <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
+              <span class="material-symbols-outlined text-base">lock</span>
             </div>
+            <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
+          </div>
+        </div>
+      </div>
 
-            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-800 tracking-wide">Koleksi TanamanDex</h4>
-                        <p class="text-[10px] text-gray-400 mt-0.5">Daftar flora yang berhasil kamu taklukkan</p>
-                    </div>
-                    <span id="dex-count" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-extrabold rounded-full border border-emerald-100/80">
-                        1 / 4 DITEMUKAN
-                    </span>
-                </div>
-
-                <div class="grid grid-cols-4 gap-3 pt-1">
-                    <div class="flex flex-col items-center gap-1.5 group cursor-pointer">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-400 shadow-sm flex items-center justify-center text-emerald-700 group-hover:scale-105 transition-transform">
-                            <span class="material-symbols-outlined text-2xl">potted_plant</span>
-                        </div>
-                        <span class="text-[9px] font-bold text-gray-600 truncate w-full text-center">Palem Raja</span>
-                    </div>
-
-                    <div class="flex flex-col items-center gap-1.5 opacity-50">
-                        <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
-                            <span class="material-symbols-outlined text-base">lock</span>
-                        </div>
-                        <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
-                    </div>
-
-                    <div class="flex flex-col items-center gap-1.5 opacity-50">
-                        <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
-                            <span class="material-symbols-outlined text-base">lock</span>
-                        </div>
-                        <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
-                    </div>
-
-                    <div class="flex flex-col items-center gap-1.5 opacity-50">
-                        <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
-                            <span class="material-symbols-outlined text-base">lock</span>
-                        </div>
-                        <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
-                    </div>
-                </div>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <h4 class="text-xs font-bold text-gray-800 tracking-wider uppercase">Tantangan Ekstra</h4>
+          <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+        </div>
+        
+        <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex justify-between items-center gap-4 hover:border-emerald-200 transition-colors">
+          <div class="flex gap-3 items-center min-w-0">
+            <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
+              <span class="material-symbols-outlined text-xl">quiz</span>
             </div>
-
-            <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                    <h4 class="text-xs font-bold text-gray-800 tracking-wider uppercase">Tantangan Ekstra</h4>
-                    <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-                </div>
-                
-                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex justify-between items-center gap-4 hover:border-emerald-200 transition-colors">
-                    <div class="flex gap-3 items-center min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
-                            <span class="material-symbols-outlined text-xl">quiz</span>
-                        </div>
-                        <div class="min-w-0">
-                            <h5 class="text-xs font-bold text-gray-700 truncate">Asah Otak: Trivia Hijau</h5>
-                            <p class="text-[10px] text-gray-400 mt-0.5 truncate">Uji wawasanmu tentang botani & dapatkan +30 XP</p>
-                        </div>
-                    </div>
-                    <button class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-[10px] font-bold rounded-lg shadow-md tracking-wider transition-all shrink-0">
-                        MAIN
-                    </button>
-                </div>
+            <div class="min-w-0">
+              <h5 class="text-xs font-bold text-gray-700 truncate">Asah Otak: Trivia Hijau</h5>
+              <p class="text-[10px] text-gray-400 mt-0.5 truncate">Uji wawasanmu tentang botani & dapatkan +30 XP</p>
             </div>
+          </div>
+          <button class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-[10px] font-bold rounded-lg shadow-md tracking-wider transition-all shrink-0">
+            MAIN
+          </button>
+        </div>
+      </div>
+    </main>
 
-        <main id="tanamandex-view" class="view-section hidden flex-1 overflow-y-auto px-6 py-5 space-y-4 no-scrollbar z-10">
-    <h3 class="text-base font-bold text-gray-800 tracking-wide">Katalog Lengkap TanamanDex</h3>
-    <p class="text-xs text-gray-400 -mt-2">Temukan seluruh QR tanaman di lapangan untuk membuka ensiklopedia ini.</p>
+    <main id="tanamandex-view" class="view-section hidden flex-1 overflow-y-auto px-6 py-5 space-y-4 no-scrollbar z-10">
+      <h3 class="text-base font-bold text-gray-800 tracking-wide">Katalog Lengkap TanamanDex</h3>
+      <p class="text-xs text-gray-400 -mt-2">Temukan seluruh QR tanaman di lapangan untuk membuka ensiklopedia ini.</p>
 
-    <div class="grid grid-cols-2 gap-4 pt-2">
+      <div class="grid grid-cols-2 gap-4 pt-2">
         <div onclick="showPlantDetail('palm')" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 cursor-pointer border-emerald-200">
-            <span class="material-symbols-outlined text-4xl text-emerald-600">potted_plant</span>
-            <h4 class="text-xs font-bold text-gray-800">Pohon Palem Raja</h4>
-            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[8px] font-bold rounded-full">TERBUKA</span>
+          <span class="material-symbols-outlined text-4xl text-emerald-600">potted_plant</span>
+          <h4 class="text-xs font-bold text-gray-800">Pohon Palem Raja</h4>
+          <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[8px] font-bold rounded-full">TERBUKA</span>
         </div>
+        
         <div id="card-dex-mangga" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 opacity-50">
-            <span id="card-icon-mangga" class="material-symbols-outlined text-4xl text-gray-400">lock</span>
-            <h4 id="card-title-mangga" class="text-xs font-bold text-gray-400">???</h4>
-            <span id="card-badge-mangga" class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[8px] font-bold rounded-full">TERKUNCI</span>
+          <span id="card-icon-mangga" class="material-symbols-outlined text-4xl text-gray-400">lock</span>
+          <h4 id="card-title-mangga" class="text-xs font-bold text-gray-400">???</h4>
+          <span id="card-badge-mangga" class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[8px] font-bold rounded-full">TERKUNCI</span>
         </div>
-    </div>
-</main>
-            <div id="scanner-container" class="hidden fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 sm:absolute sm:rounded-3xl">
-    <div class="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl p-4">
-        <h3 class="text-sm font-bold text-gray-800 text-center mb-3">Arahkan Kamera ke QR Code</h3>
-        <div id="reader" class="w-full rounded-xl overflow-hidden bg-gray-100"></div>
-        <button id="close-btn" class="mt-4 w-full py-2.5 bg-red-500 text-white font-medium rounded-xl text-xs hover:bg-red-600 transition-colors">
-            Batal Tutup Kamera
-        </button>
-    </div>
-</div>
+      </div>
+    </main>
 
-<main id="detail-view" class="view-section hidden flex-1 overflow-y-auto pb-8 flex flex-col z-10 bg-white">
-    <div class="w-full h-72 bg-gradient-to-b from-emerald-50 to-white relative flex items-center justify-center">
+    <main id="detail-view" class="view-section hidden flex-1 overflow-y-auto pb-8 flex flex-col z-10 bg-white">
+      <div class="w-full h-72 bg-gradient-to-b from-emerald-50 to-white relative flex items-center justify-center">
         <model-viewer id="plant-model" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="https://images.unsplash.com/photo-1545147986-a9d6f2103c59?w=300" shadow-intensity="1" class="w-full h-full">
-            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50">
-                <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm" data-phase="1" id="btn-scale-1">1</button>
-                <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm active" data-phase="2" id="btn-scale-2">2</button>
-                <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm" data-phase="3" id="btn-scale-3">3</button>
-            </div>
-            <button slot="ar-button" id="ar-button" class="absolute bottom-4 left-1/2 -translate-x-1/2">
-                <span class="material-symbols-outlined">view_in_ar</span> Lihat di Sekitarmu (AR)
-            </button>
+          <div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50">
+            <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm" data-phase="1" id="btn-scale-1">1</button>
+            <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm active" data-phase="2" id="btn-scale-2">2</button>
+            <button class="btn-scale w-10 h-10 rounded-xl bg-[#2A5C43] text-white font-bold flex items-center justify-center text-sm" data-phase="3" id="btn-scale-3">3</button>
+          </div>
+          <button slot="ar-button" id="ar-button" class="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-emerald-600 text-white rounded-full flex items-center gap-2 shadow-lg text-xs font-bold">
+            <span class="material-symbols-outlined text-sm">view_in_ar</span> Lihat di Sekitarmu (AR)
+          </button>
         </model-viewer>
-        <button onclick="goToHome()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/80 backdrop-blur-md shadow flex items-center justify-center text-gray-700">
-            <span class="material-symbols-outlined text-sm">arrow_back</span>
+        
+        <button onclick="goToHome()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/80 backdrop-blur-md shadow flex items-center justify-center text-gray-700 hover:bg-white transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
         </button>
-    </div>
-    <div class="px-6 pt-4 flex-1">
+      </div>
+      
+      <div class="px-6 pt-4 flex-1">
         <span class="px-2.5 py-1 bg-emerald-100 text-[#2A5C43] text-[10px] font-bold rounded-full uppercase tracking-wider" id="plant-family">Family</span>
         <h2 class="text-2xl font-bold text-[#1A3024] mt-2" id="plant-name">Nama Tanaman</h2>
         <p class="text-xs italic text-gray-400 font-medium" id="plant-latin">Nama Latin Sp.</p>
         <div class="mt-4 border-t border-gray-100 pt-4">
-            <h4 class="text-xs font-bold text-gray-700 mb-1">Deskripsi Tanaman</h4>
-            <p class="text-xs text-gray-500 leading-relaxed" id="plant-desc">Memuat deskripsi...</p>
+          <h4 class="text-xs font-bold text-gray-700 mb-1">Deskripsi Tanaman</h4>
+          <p class="text-xs text-gray-500 leading-relaxed" id="plant-desc">Memuat deskripsi...</p>
         </div>
-    </div>
-</main>
-            
+      </div>
+    </main>
 
-        <nav id="bottom-nav" class="bg-white ...">
-    <button id="nav-home" onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-0.5 text-emerald-600 font-bold transform scale-105">
+    <div id="scanner-container" class="hidden fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 sm:absolute sm:rounded-3xl">
+      <div class="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl p-4">
+        <h3 class="text-sm font-bold text-gray-800 text-center mb-3">Arahkan Kamera ke QR Code</h3>
+        <div id="reader" class="w-full rounded-xl overflow-hidden bg-gray-100"></div>
+        <button id="close-btn" class="mt-4 w-full py-2.5 bg-red-500 text-white font-medium rounded-xl text-xs hover:bg-red-600 transition-colors">
+          Batal Tutup Kamera
+        </button>
+      </div>
+    </div>
+
+    <nav id="bottom-nav" class="bg-white border-t border-gray-100 flex justify-around items-center py-3 px-6 sticky bottom-0 z-40 rounded-b-3xl">
+      <button id="nav-home" onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-0.5 text-emerald-600 font-bold transform scale-105">
         <span class="material-symbols-outlined text-2xl font-fill">home</span>
         <span class="text-[9px] tracking-wide">Beranda</span>
-    </button>
-    <button id="nav-dex" onclick="switchTab('tanamandex')" class="nav-item flex flex-col items-center gap-0.5 text-gray-400 hover:text-emerald-600 transition-colors">
+      </button>
+      <button id="nav-dex" onclick="switchTab('tanamandex')" class="nav-item flex flex-col items-center gap-0.5 text-gray-400 hover:text-emerald-600 transition-colors">
         <span class="material-symbols-outlined text-2xl">menu_book</span>
         <span class="text-[9px] tracking-wide font-medium">TanamanDex</span>
-    </button>
-    <button id="nav-rank" onclick="alert('Fitur Papan Peringkat segera hadir!')" class="nav-item flex flex-col items-center gap-0.5 text-gray-400 hover:text-emerald-600 transition-colors">
+      </button>
+      <button id="nav-rank" onclick="alert('Fitur Papan Peringkat segera hadir!')" class="nav-item flex flex-col items-center gap-0.5 text-gray-400 hover:text-emerald-600 transition-colors">
         <span class="material-symbols-outlined text-2xl">leaderboard</span>
         <span class="text-[9px] tracking-wide font-medium">Peringkat</span>
-    </button>
-</nav>
+      </button>
+    </nav>
 
-    </div>
+  </div>
 
 </body>
 </html>
