@@ -13,14 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <style>
-    body
-    <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
-    <div class="animate-pulse flex flex-col items-center">
-        <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
-        <div class="w-12 h-1 border-t-2 border-white/50 rounded-full animate-spin"></div>
-    </div>
-</div>
-    {
+    body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #f2f5f3;
     }
@@ -38,6 +31,13 @@
 </head>
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
+  <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
+    <div class="animate-pulse flex flex-col items-center">
+        <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
+        <div class="w-12 h-1 border-t-2 border-white/50 rounded-full animate-spin"></div>
+    </div>
+  </div>
+
   <div class="w-full max-w-md bg-[#FAFBFB] min-h-screen sm:min-h-[840px] shadow-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between relative border border-gray-100">
     
     <div class="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-900/10 to-transparent pointer-events-none"></div>
@@ -50,7 +50,7 @@
           </div>
           <div>
             <p class="text-[10px] text-emerald-700 font-bold tracking-wider uppercase">Halo, Penjelajah!</p>
-            <h2 class="text-sm font-bold text-gray-800">Aceng</h2>
+            <h2 class="text-sm font-bold text-gray-800">Sultan Ageng</h2>
           </div>
         </div>
         
@@ -316,10 +316,12 @@
         }
     };
 
-    // SISTEM RESET OTOMATIS (Setiap Refresh / Buka Web, Kembali ke 0)
-    sessionStorage.setItem('userXP', '0'); 
-    sessionStorage.setItem('userLevel', 'Ambassador Tunas');
-    sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
+    // LOCAL STORAGE INIT
+    if (!sessionStorage.getItem('userXP') || !sessionStorage.getItem('unlockedPlants')) {
+        sessionStorage.setItem('userXP', '0'); 
+        sessionStorage.setItem('userLevel', 'Ambassador Tunas');
+        sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
+    }
 
     // FUNGSI UPDATE UI GAMIFIKASI
     function syncGamificationUI() {
@@ -468,7 +470,7 @@
         else { switchTab('home'); }
     }
 
-    // INISIALISASI SAAT HALAMAN DIBUKA (TERMASUK DEEP LINKING)
+    // INISIALISASI SAAT HALAMAN DIBUKA
     document.addEventListener("DOMContentLoaded", () => {
         const modelViewer = document.getElementById('plant-model');
         const scaleButtons = document.querySelectorAll('.btn-scale');
