@@ -13,7 +13,14 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <style>
-    body {
+    body
+    <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
+    <div class="animate-pulse flex flex-col items-center">
+        <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
+        <div class="w-12 h-1 border-t-2 border-white/50 rounded-full animate-spin"></div>
+    </div>
+</div>
+    {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #f2f5f3;
     }
@@ -392,6 +399,17 @@
             syncGamificationUI();
         }
     }
+
+    // LOADING SCREEN LOGIC
+    window.addEventListener("load", () => {
+        const loader = document.getElementById('loading-screen');
+        setTimeout(() => {
+            loader.style.opacity = '0'; // Efek fade out
+            setTimeout(() => {
+                loader.style.display = 'none'; // Hilang sepenuhnya
+            }, 700);
+        }, 3000); // 3000 milidetik = 3 detik
+    });
 
     // SWITCH TAB MENU BAWAH
     function switchTab(tabId) {
