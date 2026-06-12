@@ -31,6 +31,7 @@
 </head>
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
+  <!-- LOADING SCREEN -->
   <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="animate-pulse flex flex-col items-center">
         <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
@@ -54,10 +55,11 @@
           </div>
         </div>
         
-        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+        <!-- TOMBOL LEVEL: Diubah menjadi button agar bisa diklik -->
+        <button onclick="switchTab('level')" class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer">
           <span class="material-symbols-outlined text-amber-600 text-sm font-bold">military_tech</span>
           <span id="user-level" class="text-[9px] font-bold text-amber-800 tracking-wide uppercase">Ambassador Tunas</span>
-        </div>
+        </button>
       </div>
 
       <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-100">
@@ -74,6 +76,7 @@
       </div>
     </header>
 
+    <!-- VIEW 1: BERANDA -->
     <main id="home-view" class="view-section flex-1 overflow-y-auto px-6 py-5 space-y-6 no-scrollbar z-10">
       
       <div class="relative rounded-2xl overflow-hidden shadow-md border border-emerald-950/10 group transition-transform duration-300 active:scale-98">
@@ -170,6 +173,7 @@
       </div>
     </main>
 
+    <!-- VIEW 2: TANAMANDEX -->
     <main id="tanamandex-view" class="view-section hidden flex-1 overflow-y-auto px-6 py-5 space-y-4 no-scrollbar z-10">
       <h3 class="text-base font-bold text-gray-800 tracking-wide">Katalog Lengkap TanamanDex</h3>
       <p class="text-xs text-gray-400 -mt-2">Temukan seluruh QR tanaman di lapangan untuk membuka ensiklopedia ini.</p>
@@ -189,6 +193,7 @@
       </div>
     </main>
 
+    <!-- VIEW 3: RANKING -->
     <main id="rank-view" class="view-section hidden flex-1 flex-col items-center justify-center px-6 text-center z-10 bg-[#FAFBFB]">
       <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
           <span class="material-symbols-outlined text-6xl text-emerald-700 animate-bounce flex items-center justify-center">rocket_launch</span>
@@ -203,6 +208,7 @@
       </button>
     </main>
 
+    <!-- VIEW 4: DETAIL AR -->
     <main id="detail-view" class="view-section hidden flex-1 overflow-y-auto pb-8 flex flex-col z-10 bg-white">
       <div class="w-full h-72 bg-gradient-to-b from-emerald-50 to-white relative flex items-center justify-center">
         <model-viewer id="plant-model" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="https://images.unsplash.com/photo-1545147986-a9d6f2103c59?w=300" shadow-intensity="1" class="w-full h-full">
@@ -226,11 +232,11 @@
         <h2 class="text-2xl font-bold text-[#1A3024] mt-2" id="plant-name">Nama Tanaman</h2>
         <p class="text-xs italic text-gray-400 font-medium" id="plant-latin">Nama Latin Sp.</p>
         
-        <div class="mt-4 border-t border-gray-100 pt-4" id="plant-desc">
-          </div>
+        <div class="mt-4 border-t border-gray-100 pt-4" id="plant-desc"></div>
       </div>
     </main>
 
+    <!-- VIEW 5: KUIS TRIVIA -->
     <main id="quiz-view" class="view-section hidden flex-1 flex-col px-6 py-8 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <div class="flex items-center justify-between mb-8">
         <button onclick="switchTab('home')" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
@@ -256,6 +262,29 @@
       </div>
     </main>
 
+    <!-- VIEW 6: DAFTAR LEVEL (JENJANG PRESTASI) -->
+    <main id="level-view" class="view-section hidden flex-1 flex-col px-6 py-6 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
+      <div class="flex items-center gap-4 mb-6">
+        <button onclick="switchTab('home')" class="w-9 h-9 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+        </button>
+        <h3 class="text-base font-bold text-gray-800 tracking-wide">Jenjang Prestasi</h3>
+      </div>
+
+      <p class="text-xs text-gray-500 mb-6 leading-relaxed">Kumpulkan XP dari memindai tanaman dan menjawab kuis untuk membuka gelar penjelajah baru!</p>
+
+      <!-- Container Timeline -->
+      <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 relative">
+         <!-- Garis lurus timeline -->
+         <div class="absolute left-[37px] top-8 bottom-10 w-0.5 bg-gray-100 z-0"></div>
+
+         <div id="level-list" class="relative z-10 flex flex-col gap-6">
+            <!-- Level items akan dimuat oleh JavaScript -->
+         </div>
+      </div>
+    </main>
+
+    <!-- MODAL SCANNER -->
     <div id="scanner-container" class="hidden fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 sm:absolute sm:rounded-3xl">
       <div class="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl p-4">
           <h3 class="text-sm font-bold text-gray-800 text-center mb-3">Arahkan Kamera ke QR Code</h3>
@@ -340,7 +369,6 @@
     let currentPlantId = ""; 
 
     // DATA MASTER
-    // PENGGUNAAN BACKTICK (`) MENGIZINKAN KITA MENGGUNAKAN HTML LANGSUNG DI DALAM JAVASCRIPT
     const plantDatabase = {
         "palm": {
             name: "Pohon Palem Raja",
@@ -379,6 +407,26 @@
         }
     };
 
+    // SISTEM LEVELING
+    const levelSystem = [
+        { name: "Ambassador Tunas", minXP: 0, icon: "eco" },
+        { name: "Pengamat Daun", minXP: 100, icon: "psychology" },
+        { name: "Penjelajah Rimba", minXP: 200, icon: "explore" },
+        { name: "Pawang Akar", minXP: 300, icon: "nature_people" },
+        { name: "Mahaguru Botani", minXP: 400, icon: "workspace_premium" }
+    ];
+
+    function calculateLevel(xp) {
+        let currentLvl = levelSystem[0].name;
+        for (let i = levelSystem.length - 1; i >= 0; i--) {
+            if (xp >= levelSystem[i].minXP) {
+                currentLvl = levelSystem[i].name;
+                break;
+            }
+        }
+        return currentLvl;
+    }
+
     // LOCAL STORAGE INIT
     if (!sessionStorage.getItem('userXP') || !sessionStorage.getItem('unlockedPlants')) {
         sessionStorage.setItem('userXP', '0'); 
@@ -386,17 +434,50 @@
         sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
     }
 
-    // FUNGSI UPDATE UI GAMIFIKASI
+    // FUNGSI UPDATE UI GAMIFIKASI & LEVEL
     function syncGamificationUI() {
         const xp = parseInt(sessionStorage.getItem('userXP'));
-        const level = sessionStorage.getItem('userLevel');
+        const calculatedLevelName = calculateLevel(xp);
+        sessionStorage.setItem('userLevel', calculatedLevelName); // Simpan level terbaru
+
         const unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
 
         document.getElementById('xp-text').innerText = `${xp} / 500 XP`;
         document.getElementById('xp-bar').style.width = `${(xp / 500) * 100}%`;
-        document.getElementById('user-level').innerText = level;
+        document.getElementById('user-level').innerText = calculatedLevelName;
         document.getElementById('dex-count').innerText = `${unlocked.length} / 4 DITEMUKAN`;
 
+        // Render Daftar Level di Halaman Level
+        const levelListContainer = document.getElementById('level-list');
+        levelListContainer.innerHTML = '';
+        
+        levelSystem.forEach((lvl, index) => {
+            const isUnlocked = xp >= lvl.minXP;
+            
+            // Tentukan gaya berdasarkan status (terbuka/terkunci)
+            const iconBg = isUnlocked ? "bg-emerald-100 text-emerald-600" : "bg-gray-100 text-gray-400";
+            const textColor = isUnlocked ? "text-gray-800" : "text-gray-400";
+            const descColor = isUnlocked ? "text-emerald-600 font-bold" : "text-gray-400";
+            const checkIcon = isUnlocked ? `<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>` : `<span class="material-symbols-outlined text-gray-300 text-lg">lock</span>`;
+
+            const levelHTML = `
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center shrink-0 border-2 border-white shadow-sm z-10">
+                        <span class="material-symbols-outlined text-xl">${lvl.icon}</span>
+                    </div>
+                    <div class="flex-1 flex justify-between items-center bg-gray-50 border border-gray-100 p-3 rounded-xl shadow-sm">
+                        <div>
+                            <h4 class="text-xs font-bold ${textColor} uppercase tracking-wider">${lvl.name}</h4>
+                            <p class="text-[10px] ${descColor} mt-0.5">Butuh ${lvl.minXP} XP</p>
+                        </div>
+                        ${checkIcon}
+                    </div>
+                </div>
+            `;
+            levelListContainer.insertAdjacentHTML('beforeend', levelHTML);
+        });
+
+        // BUKA KUNCI TANAMAN
         if (unlocked.includes('mangga')) {
             const slotMangga = document.getElementById('slot-mangga');
             if(slotMangga) {
@@ -455,7 +536,7 @@
             unlocked.push(plantId);
             sessionStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
             let currentXP = parseInt(sessionStorage.getItem('userXP')) + 100;
-            if (currentXP >= 500) { currentXP = 500; sessionStorage.setItem('userLevel', 'Mahaguru Botani'); }
+            if (currentXP > 500) currentXP = 500;
             sessionStorage.setItem('userXP', currentXP.toString());
             
             document.getElementById('reward-modal').classList.remove('hidden');
@@ -501,6 +582,10 @@
             document.getElementById('quiz-view').classList.remove('hidden');
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('text-emerald-600', 'font-bold'));
             window.history.pushState({ view: 'quiz' }, '', '?tab=quiz');
+        } else if (tabId === 'level') {
+            document.getElementById('level-view').classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('text-emerald-600', 'font-bold'));
+            window.history.pushState({ view: 'level' }, '', '?tab=level');
         }
     }
 
@@ -517,7 +602,6 @@
         document.getElementById('plant-latin').innerText = plant.latin;
         document.getElementById('plant-family').innerText = plant.family;
         
-        // MENGGUNAKAN innerHTML AGAR FORMAT TEKS BOLD & PARAGRAF TERBACA
         document.getElementById('plant-desc').innerHTML = plant.desc;
         
         const modelViewer = document.getElementById('plant-model');
@@ -582,6 +666,7 @@
         else if (event.state && event.state.view === 'tanamandex') { switchTab('tanamandex'); } 
         else if (event.state && event.state.view === 'rank') { switchTab('rank'); } 
         else if (event.state && event.state.view === 'quiz') { switchTab('quiz'); } 
+        else if (event.state && event.state.view === 'level') { switchTab('level'); } 
         else { switchTab('home'); }
     });
 
@@ -705,18 +790,13 @@
             sessionStorage.setItem('userXP', currentXP.toString());
             syncGamificationUI();
             
-            // Ubah teks XP sesuai jumlah jawaban yang benar
             document.getElementById('quiz-reward-text').innerHTML = `<span class="material-symbols-outlined text-base">star</span> +${xp} XP`;
-            
-            // Tampilkan Modal Kuis yang estetik (bukan alert biasa)
             document.getElementById('quiz-reward-modal').classList.remove('hidden');
         } else {
-            // Jika XP 0 (salah semua), langsung kembali ke beranda
             switchTab('home');
         }
     }
 
-    // Fungsi untuk menutup modal kuis dan kembali ke home
     function closeQuizRewardModal() {
         document.getElementById('quiz-reward-modal').classList.add('hidden');
         switchTab('home');
