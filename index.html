@@ -55,7 +55,6 @@
           </div>
         </div>
         
-        <!-- TOMBOL LEVEL: Diubah menjadi button agar bisa diklik -->
         <button onclick="switchTab('level')" class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer">
           <span class="material-symbols-outlined text-amber-600 text-sm font-bold">military_tech</span>
           <span id="user-level" class="text-[9px] font-bold text-amber-800 tracking-wide uppercase">Ambassador Tunas</span>
@@ -273,13 +272,9 @@
 
       <p class="text-xs text-gray-500 mb-6 leading-relaxed">Kumpulkan XP dari memindai tanaman dan menjawab kuis untuk membuka gelar penjelajah baru!</p>
 
-      <!-- Container Timeline -->
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 relative">
-         <!-- Garis lurus timeline -->
          <div class="absolute left-[37px] top-8 bottom-10 w-0.5 bg-gray-100 z-0"></div>
-
          <div id="level-list" class="relative z-10 flex flex-col gap-6">
-            <!-- Level items akan dimuat oleh JavaScript -->
          </div>
       </div>
     </main>
@@ -298,7 +293,7 @@
       </div>
     </div>
 
-    <!-- MODAL REWARD SCAN TANAMAN -->
+    <!-- MODAL REWARD SCAN TANAMAN (z-index 100) -->
     <div id="reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-emerald-100">
@@ -318,7 +313,7 @@
       </div>
     </div>
 
-    <!-- MODAL KUIS REWARD -->
+    <!-- MODAL KUIS REWARD (z-index 100) -->
     <div id="quiz-reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-amber-100 to-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-amber-100">
@@ -334,6 +329,36 @@
         </div>
         <button onclick="closeQuizRewardModal()" class="w-full py-3 bg-gradient-to-r from-[#2A5C43] to-[#1e4531] text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
           Tutup & Kembali
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL NAIK LEVEL BARU (z-index 120 paling atas) -->
+    <div id="levelup-modal" class="hidden fixed inset-0 z-[120] bg-black/80 backdrop-blur-md flex flex-col items-center justify-center p-4">
+      <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform relative overflow-hidden">
+        
+        <!-- Efek Cahaya / Sparkles -->
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-amber-100/50 to-transparent"></div>
+        
+        <!-- Ikon Level Baru yang Memantul -->
+        <div class="relative w-24 h-24 bg-gradient-to-tr from-amber-100 to-orange-50 rounded-full flex items-center justify-center mx-auto mb-5 shadow-inner border-4 border-amber-200">
+          <div class="absolute -top-1 -right-1 text-amber-400 animate-ping"><span class="material-symbols-outlined text-sm">auto_awesome</span></div>
+          <div class="absolute -bottom-1 -left-1 text-amber-400 animate-ping" style="animation-delay: 0.5s;"><span class="material-symbols-outlined text-sm">auto_awesome</span></div>
+          
+          <span id="levelup-icon" class="material-symbols-outlined text-6xl text-amber-500 animate-bounce">military_tech</span>
+        </div>
+        
+        <h3 class="text-2xl font-extrabold text-gray-800 mb-1 tracking-wider">SELAMAT!</h3>
+        <p class="text-[11px] text-gray-500 mb-4 leading-relaxed px-2">Kamu telah naik level menjadi:</p>
+        
+        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/60 rounded-xl py-3 mb-6 shadow-sm">
+          <p id="levelup-name" class="text-emerald-700 font-extrabold text-sm uppercase tracking-widest">
+            Nama Level
+          </p>
+        </div>
+        
+        <button onclick="document.getElementById('levelup-modal').classList.add('hidden')" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
+          Lanjutkan Petualangan
         </button>
       </div>
     </div>
@@ -427,6 +452,16 @@
         return currentLvl;
     }
 
+    // FUNGSI MENAMPILKAN POPUP NAIK LEVEL
+    function showLevelUpModal(levelName) {
+        const levelData = levelSystem.find(l => l.name === levelName);
+        if (levelData) {
+            document.getElementById('levelup-icon').innerText = levelData.icon;
+            document.getElementById('levelup-name').innerText = levelData.name;
+            document.getElementById('levelup-modal').classList.remove('hidden');
+        }
+    }
+
     // LOCAL STORAGE INIT
     if (!sessionStorage.getItem('userXP') || !sessionStorage.getItem('unlockedPlants')) {
         sessionStorage.setItem('userXP', '0'); 
@@ -437,7 +472,14 @@
     // FUNGSI UPDATE UI GAMIFIKASI & LEVEL
     function syncGamificationUI() {
         const xp = parseInt(sessionStorage.getItem('userXP'));
+        const oldLevel = sessionStorage.getItem('userLevel');
         const calculatedLevelName = calculateLevel(xp);
+        
+        // Cek apakah terjadi Naik Level (Lewati jika baru pertama kali main / reload awal)
+        if (oldLevel && oldLevel !== calculatedLevelName && xp > 0) {
+            showLevelUpModal(calculatedLevelName);
+        }
+
         sessionStorage.setItem('userLevel', calculatedLevelName); // Simpan level terbaru
 
         const unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
@@ -454,7 +496,6 @@
         levelSystem.forEach((lvl, index) => {
             const isUnlocked = xp >= lvl.minXP;
             
-            // Tentukan gaya berdasarkan status (terbuka/terkunci)
             const iconBg = isUnlocked ? "bg-emerald-100 text-emerald-600" : "bg-gray-100 text-gray-400";
             const textColor = isUnlocked ? "text-gray-800" : "text-gray-400";
             const descColor = isUnlocked ? "text-emerald-600 font-bold" : "text-gray-400";
@@ -536,7 +577,7 @@
             unlocked.push(plantId);
             sessionStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
             let currentXP = parseInt(sessionStorage.getItem('userXP')) + 100;
-            if (currentXP > 500) currentXP = 500;
+            if (currentXP >= 500) { currentXP = 500; sessionStorage.setItem('userLevel', 'Mahaguru Botani'); }
             sessionStorage.setItem('userXP', currentXP.toString());
             
             document.getElementById('reward-modal').classList.remove('hidden');
