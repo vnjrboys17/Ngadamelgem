@@ -193,19 +193,24 @@
     </main>
 
     <!-- VIEW 3: RANKING -->
-    <main id="rank-view" class="view-section hidden flex-1 px-6 z-10 bg-[#FAFBFB]">
-      <div class="flex flex-col items-center justify-center h-full w-full pb-20">
-        <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <span class="material-symbols-outlined text-6xl text-emerald-700 animate-bounce flex items-center justify-center">rocket_launch</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center w-full">Fitur Segera Hadir!</h3>
-        <p class="text-sm text-gray-500 mb-6 leading-relaxed text-center w-full">
-            Kami sedang membangun Papan Peringkat agar kamu bisa bersaing dengan penjelajah lainnya. <br>
-            Tunggu pembaruan berikutnya!
-        </p>
-        <button onclick="switchTab('home')" class="px-6 py-2.5 bg-[#2A5C43] text-white font-bold rounded-xl shadow-lg hover:bg-[#1a3d2c] transition-all mx-auto">
-            Kembali ke Beranda
-        </button>
+    <!-- VIEW 3: RANKING -->
+    <main id="rank-view" class="view-section hidden flex-1 flex flex-col items-center justify-center px-6 z-10 bg-[#FAFBFB]">
+      <div class="flex flex-col items-center justify-center w-full">
+          <!-- Ikon roket -->
+          <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-6xl text-emerald-700 animate-bounce">rocket_launch</span>
+          </div>
+          
+          <!-- Teks dan Tombol -->
+          <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">Fitur Segera Hadir!</h3>
+          <p class="text-sm text-gray-500 mb-8 leading-relaxed text-center">
+              Kami sedang membangun Papan Peringkat agar kamu bisa bersaing dengan penjelajah lainnya. <br>
+              Tunggu pembaruan berikutnya!
+          </p>
+          
+          <button onclick="switchTab('home')" class="px-6 py-2.5 bg-[#2A5C43] text-white font-bold rounded-xl shadow-lg hover:bg-[#1a3d2c] transition-all">
+              Kembali ke Beranda
+          </button>
       </div>
     </main>
 
