@@ -31,7 +31,6 @@
 </head>
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
-  <!-- LOADING SCREEN -->
   <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="animate-pulse flex flex-col items-center">
         <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
@@ -75,7 +74,6 @@
       </div>
     </header>
 
-    <!-- VIEW 1: BERANDA -->
     <main id="home-view" class="view-section flex-1 overflow-y-auto px-6 py-5 space-y-6 no-scrollbar z-10">
       
       <div class="relative rounded-2xl overflow-hidden shadow-md border border-emerald-950/10 group transition-transform duration-300 active:scale-98">
@@ -162,17 +160,16 @@
             </div>
             <div class="min-w-0">
               <h5 class="text-xs font-bold text-gray-700 truncate">Asah Otak: Trivia Hijau</h5>
-              <p class="text-[10px] text-gray-400 mt-0.5 truncate">Uji wawasanmu tentang botani & dapatkan +30 XP</p>
+              <p class="text-[10px] text-gray-400 mt-0.5 truncate">Selesaikan Stage & dapatkan +100 XP</p>
             </div>
           </div>
-          <button onclick="startQuiz()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-[10px] font-bold rounded-lg shadow-md tracking-wider transition-all shrink-0">
+          <button onclick="startStageIntro()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-[10px] font-bold rounded-lg shadow-md tracking-wider transition-all shrink-0">
             MAIN
           </button>
         </div>
       </div>
     </main>
 
-    <!-- VIEW 2: TANAMANDEX -->
     <main id="tanamandex-view" class="view-section hidden flex-1 overflow-y-auto px-6 py-5 space-y-4 no-scrollbar z-10">
       <h3 class="text-base font-bold text-gray-800 tracking-wide">Katalog Lengkap TanamanDex</h3>
       <p class="text-xs text-gray-400 -mt-2">Temukan seluruh QR tanaman di lapangan untuk membuka ensiklopedia ini.</p>
@@ -192,7 +189,6 @@
       </div>
     </main>
 
-    <!-- VIEW 3: RANKING -->
     <main id="rank-view" class="view-section hidden flex-1 flex flex-col items-center justify-center px-6 z-10 bg-[#FAFBFB]">
       <div class="flex flex-col items-center justify-center w-full">
         <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6 mx-auto">
@@ -209,7 +205,6 @@
       </div>
     </main>
 
-    <!-- VIEW 4: DETAIL AR -->
     <main id="detail-view" class="view-section hidden flex-1 overflow-y-auto pb-8 flex flex-col z-10 bg-white">
       <div class="w-full h-72 bg-gradient-to-b from-emerald-50 to-white relative flex items-center justify-center">
         <model-viewer id="plant-model" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="https://images.unsplash.com/photo-1545147986-a9d6f2103c59?w=300" shadow-intensity="1" class="w-full h-full">
@@ -237,7 +232,6 @@
       </div>
     </main>
 
-    <!-- VIEW 5: KUIS TRIVIA -->
     <main id="quiz-view" class="view-section hidden flex-1 flex-col px-6 py-8 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <div class="flex items-center justify-between mb-8">
         <button onclick="switchTab('home')" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
@@ -245,7 +239,7 @@
         </button>
         <div class="bg-amber-100 text-amber-700 px-3 py-1.5 rounded-full text-[10px] font-bold flex items-center gap-1 shadow-sm border border-amber-200/50">
           <span class="material-symbols-outlined text-sm">timer</span> 
-          <span id="quiz-progress">1 / 3</span>
+          <span id="quiz-progress">1 / 4</span>
         </div>
       </div>
 
@@ -263,7 +257,6 @@
       </div>
     </main>
 
-    <!-- VIEW 6: DAFTAR LEVEL (JENJANG PRESTASI) -->
     <main id="level-view" class="view-section hidden flex-1 flex-col px-6 py-6 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <div class="flex items-center gap-4 mb-6">
         <button onclick="switchTab('home')" class="w-9 h-9 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
@@ -277,12 +270,10 @@
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 relative">
          <div class="absolute left-[37px] top-8 bottom-10 w-0.5 bg-gray-100 z-0"></div>
          <div id="level-list" class="relative z-10 flex flex-col gap-6">
-            <!-- Level items akan dimuat oleh JavaScript -->
-         </div>
+            </div>
       </div>
     </main>
 
-    <!-- VIEW 7: ABOUT US -->
     <main id="about-view" class="view-section hidden flex-1 flex-col px-6 py-8 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <h3 class="text-lg font-bold text-gray-800 mb-6">Tentang Aplikasi</h3>
       
@@ -296,7 +287,6 @@
       
       <div class="space-y-3 pb-6">
         
-        <!-- 1. Abu (Pria) -->
         <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-emerald-600">
@@ -309,7 +299,6 @@
           </div>
         </div>
 
-        <!-- 2. Agung (Pria) -->
         <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
             <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-emerald-600">
@@ -322,7 +311,6 @@
           </div>
         </div>
 
-        <!-- 3. Azzahra (Wanita/Hijab) -->
         <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
             <svg viewBox="0 0 24 24" class="w-7 h-7 text-emerald-600">
@@ -332,11 +320,10 @@
           </div>
           <div>
             <h5 class="text-xs font-bold text-gray-800">Azzahra Maysa Salsabila</h5>
-            <p class="text-[10px] text-gray-500 font-medium">3D Asset & AR Integration Specialist</p>
+            <p class="text-[10px] text-gray-500 font-medium">3D Asset & AR Integration</p>
           </div>
         </div>
 
-        <!-- 4. Davina (Wanita/Hijab) -->
         <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
             <svg viewBox="0 0 24 24" class="w-7 h-7 text-emerald-600">
@@ -350,7 +337,6 @@
           </div>
         </div>
 
-        <!-- 5. Willy (Pria) -->
         <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
              <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-emerald-600">
@@ -366,7 +352,6 @@
       </div>
     </main>
 
-    <!-- MODAL SCANNER -->
     <div id="scanner-container" class="hidden fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 sm:absolute sm:rounded-3xl">
       <div class="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl p-4">
           <h3 class="text-sm font-bold text-gray-800 text-center mb-3">Arahkan Kamera ke QR Code</h3>
@@ -380,7 +365,6 @@
       </div>
     </div>
 
-    <!-- MODAL REWARD SCAN TANAMAN -->
     <div id="reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-emerald-100">
@@ -400,27 +384,63 @@
       </div>
     </div>
 
-    <!-- MODAL KUIS REWARD -->
     <div id="quiz-reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-amber-100 to-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-amber-100">
           <span class="material-symbols-outlined text-5xl text-amber-500 animate-bounce">psychology</span>
         </div>
-        <h3 class="text-xl font-extrabold text-gray-800 mb-1">Keren!</h3>
-        <p class="text-[11px] text-gray-500 mb-5 leading-relaxed px-2">Kamu berhasil menyelesaikan Trivia Hijau dan mendapatkan wawasan baru.</p>
+        <h3 class="text-xl font-extrabold text-gray-800 mb-1">Sempurna!</h3>
+        <p class="text-[11px] text-gray-500 mb-5 leading-relaxed px-2">Kamu berhasil menyelesaikan Stage ini dengan nilai sempurna.</p>
         <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/60 rounded-xl py-2 mb-6 shadow-sm">
           <p id="quiz-reward-text" class="text-emerald-700 font-extrabold text-sm flex items-center justify-center gap-1">
             <span class="material-symbols-outlined text-base">star</span>
-            +30 XP
+            +100 XP
           </p>
         </div>
-        <button onclick="closeQuizRewardModal()" class="w-full py-3 bg-gradient-to-r from-[#2A5C43] to-[#1e4531] text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
-          Tutup & Kembali
+        <button onclick="claimQuizReward()" class="w-full py-3 bg-gradient-to-r from-[#2A5C43] to-[#1e4531] text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
+          Klaim XP & Lanjut
         </button>
       </div>
     </div>
 
-    <!-- MODAL NAIK LEVEL -->
+    <div id="quiz-fail-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+      <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
+        <div class="w-20 h-20 bg-gradient-to-tr from-red-100 to-pink-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-red-100">
+          <span class="material-symbols-outlined text-5xl text-red-500">cancel</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-gray-800 mb-1">Sayang Sekali!</h3>
+        <p class="text-[11px] text-gray-500 mb-4 leading-relaxed px-2">Kamu harus menjawab semua pertanyaan dengan benar untuk mendapatkan XP.</p>
+        <div class="bg-gray-50 border border-gray-200/60 rounded-xl py-2 mb-6 shadow-sm">
+          <p id="fail-score-text" class="text-gray-700 font-bold text-xs flex items-center justify-center gap-1">
+            0 / 4 Benar
+          </p>
+        </div>
+        <div class="flex gap-2 w-full">
+            <button onclick="closeFailModal()" class="w-1/3 py-3 bg-gray-100 text-gray-600 font-bold rounded-xl shadow-sm hover:bg-gray-200 active:scale-95 transition-all text-xs tracking-wide uppercase">
+              Batal
+            </button>
+            <button onclick="retryQuiz()" class="w-2/3 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold rounded-xl shadow-md hover:shadow-lg active:scale-95 transition-all text-xs tracking-wide uppercase">
+              Ulangi Stage
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="stage-intro-modal" class="hidden fixed inset-0 z-[110] bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+      <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
+        <div class="w-20 h-20 bg-gradient-to-tr from-amber-100 to-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-amber-100">
+          <span class="material-symbols-outlined text-5xl text-amber-500">route</span>
+        </div>
+        <h3 id="stage-intro-title" class="text-2xl font-extrabold text-gray-800 mb-1">Stage 1</h3>
+        <p id="stage-intro-desc" class="text-xs text-emerald-600 font-bold mb-6 px-2 uppercase tracking-wide">
+            Deskripsi Misi
+        </p>
+        <button onclick="beginQuiz()" class="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
+          Ayo Mulai!
+        </button>
+      </div>
+    </div>
+
     <div id="level-up-modal" class="hidden fixed inset-0 z-[110] bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-24 h-24 bg-gradient-to-tr from-amber-200 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border-4 border-white shadow-lg">
@@ -439,7 +459,6 @@
       </div>
     </div>
 
-    <!-- MODAL TANAMAN TERKUNCI -->
     <div id="locked-modal" class="hidden fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-gray-100">
@@ -453,7 +472,6 @@
       </div>
     </div>
 
-    <!-- NAVBAR BAWAH (Diperbarui dengan About Us) -->
     <nav id="bottom-nav" class="bg-white border-t border-gray-100 flex justify-around items-center py-3 px-6 sticky bottom-0 z-40 rounded-b-3xl">
       <button id="nav-home" onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-0.5 text-emerald-600 font-bold transform scale-105">
         <span class="material-symbols-outlined text-2xl font-fill">home</span>
@@ -488,14 +506,14 @@
     let currentPlantId = ""; 
     let pendingLevelUp = null;
 
-    // SISTEM RESET OTOMATIS
-    if (!sessionStorage.getItem('userXP') || !sessionStorage.getItem('unlockedPlants')) {
-        sessionStorage.setItem('userXP', '0'); 
-        sessionStorage.setItem('userLevel', 'Penjelajah Pemula');
-        sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
-    }
+    // SISTEM RESET OTOMATIS SAAT DI REFRESH
+    // Ini akan memaksa semua progress kembali ke 0 setiap page load
+    sessionStorage.setItem('userXP', '0'); 
+    sessionStorage.setItem('userLevel', 'Penjelajah Pemula');
+    sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
+    sessionStorage.setItem('currentQuizStage', '0');
 
-    // DATA MASTER
+    // DATA MASTER TANAMAN
     const plantDatabase = {
         "palm": {
             name: "Pohon Palem Raja",
@@ -520,7 +538,7 @@
                   <p class="text-xs text-gray-500 leading-relaxed">Tahukah kamu? Beberapa jenis pohon palm dapat hidup hingga puluhan bahkan ratusan tahun. Palm juga memiliki batang yang unik karena umumnya tumbuh lurus tanpa cabang, sehingga mudah dikenali dan menjadi salah satu tanaman hias paling populer di daerah tropis salah satunya adalah Indonesia.</p>
               </div>
             `,
-            models: { "1": "tunas_palm.glb", "2": "tropical_palm_tree.glb", "3": "palm_berbuah.glb" }
+            models: { "1": "tunas_palm.glb", "2": "tropical_palm_tree.glb", "3": "buah_palm.glb" }
         },
         "mangga": {
             name: "Pohon Mangga",
@@ -545,7 +563,7 @@
                   <p class="text-xs text-gray-500 leading-relaxed">Tahukah kamu? Pohon mangga dapat hidup selama puluhan tahun dan terus menghasilkan buah setiap musimnya. Indonesia juga memiliki banyak varietas mangga terkenal, seperti mangga harum manis, manalagi, dan gedong gincu.</p>
               </div>
             `,
-            models: { "1": "bibit_mangga.glb", "2": "mango_tree_fix.glb", "3": "mangga_berbuah.glb" }
+            models: { "1": "bibit_mangga.glb", "2": "mango_tree_fix.glb", "3": "mangga_kecil.glb" }
         }
     };
 
@@ -572,11 +590,11 @@
 
     // FUNGSI UPDATE UI GAMIFIKASI & LEVEL
     function syncGamificationUI() {
-        const xp = parseInt(sessionStorage.getItem('userXP'));
+        const xp = parseInt(sessionStorage.getItem('userXP')) || 0;
         const calculatedLevelName = calculateLevel(xp);
         sessionStorage.setItem('userLevel', calculatedLevelName); 
 
-        const unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
+        const unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants')) || [];
 
         document.getElementById('xp-text').innerText = `${xp} / 600 XP`;
         document.getElementById('xp-bar').style.width = `${(xp / 600) * 100}%`;
@@ -584,33 +602,35 @@
         document.getElementById('dex-count').innerText = `${unlocked.length} / 4 DITEMUKAN`;
 
         const levelListContainer = document.getElementById('level-list');
-        levelListContainer.innerHTML = '';
-        
-        levelSystem.forEach((lvl, index) => {
-            if (lvl.hidden) return; // Mengabaikan level tersembunyi
+        if (levelListContainer) {
+            levelListContainer.innerHTML = '';
             
-            const isUnlocked = xp >= lvl.minXP;
-            const iconBg = isUnlocked ? "bg-emerald-100 text-emerald-600" : "bg-gray-100 text-gray-400";
-            const textColor = isUnlocked ? "text-gray-800" : "text-gray-400";
-            const descColor = isUnlocked ? "text-emerald-600 font-bold" : "text-gray-400";
-            const checkIcon = isUnlocked ? `<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>` : `<span class="material-symbols-outlined text-gray-300 text-lg">lock</span>`;
+            levelSystem.forEach((lvl, index) => {
+                if (lvl.hidden) return; 
+                
+                const isUnlocked = xp >= lvl.minXP;
+                const iconBg = isUnlocked ? "bg-emerald-100 text-emerald-600" : "bg-gray-100 text-gray-400";
+                const textColor = isUnlocked ? "text-gray-800" : "text-gray-400";
+                const descColor = isUnlocked ? "text-emerald-600 font-bold" : "text-gray-400";
+                const checkIcon = isUnlocked ? `<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>` : `<span class="material-symbols-outlined text-gray-300 text-lg">lock</span>`;
 
-            const levelHTML = `
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center shrink-0 border-2 border-white shadow-sm z-10">
-                        <span class="material-symbols-outlined text-xl">${lvl.icon}</span>
-                    </div>
-                    <div class="flex-1 flex justify-between items-center bg-gray-50 border border-gray-100 p-3 rounded-xl shadow-sm">
-                        <div>
-                            <h4 class="text-xs font-bold ${textColor} uppercase tracking-wider">${lvl.name}</h4>
-                            <p class="text-[10px] ${descColor} mt-0.5">Butuh ${lvl.minXP} XP</p>
+                const levelHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center shrink-0 border-2 border-white shadow-sm z-10">
+                            <span class="material-symbols-outlined text-xl">${lvl.icon}</span>
                         </div>
-                        ${checkIcon}
+                        <div class="flex-1 flex justify-between items-center bg-gray-50 border border-gray-100 p-3 rounded-xl shadow-sm">
+                            <div>
+                                <h4 class="text-xs font-bold ${textColor} uppercase tracking-wider">${lvl.name}</h4>
+                                <p class="text-[10px] ${descColor} mt-0.5">Butuh ${lvl.minXP} XP</p>
+                            </div>
+                            ${checkIcon}
+                        </div>
                     </div>
-                </div>
-            `;
-            levelListContainer.insertAdjacentHTML('beforeend', levelHTML);
-        });
+                `;
+                levelListContainer.insertAdjacentHTML('beforeend', levelHTML);
+            });
+        }
 
         // BUKA KUNCI TANAMAN
         if (unlocked.includes('mangga')) {
@@ -666,7 +686,7 @@
 
     // FUNGSI REWARD SCAN
     function rewardNewScan(plantId) {
-        let unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants'));
+        let unlocked = JSON.parse(sessionStorage.getItem('unlockedPlants')) || [];
         if (!unlocked.includes(plantId)) {
             unlocked.push(plantId);
             sessionStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
@@ -696,18 +716,6 @@
             document.getElementById('level-up-name').innerText = pendingLevelUp;
             document.getElementById('level-up-modal').classList.remove('hidden');
             pendingLevelUp = null;
-        }
-    }
-
-    // PENUTUP MODAL XP KUIS
-    function closeQuizRewardModal() {
-        document.getElementById('quiz-reward-modal').classList.add('hidden');
-        if (pendingLevelUp) {
-            document.getElementById('level-up-name').innerText = pendingLevelUp;
-            document.getElementById('level-up-modal').classList.remove('hidden');
-            pendingLevelUp = null;
-        } else {
-            switchTab('home');
         }
     }
 
@@ -890,29 +898,86 @@
     }
     closeBtn.addEventListener('click', stopScanner);
 
-    // SISTEM KUIS TRIVIA
-    const quizData = [
+    // ==========================================
+    // SISTEM KUIS TRIVIA MULTI-STAGE
+    // ==========================================
+    
+    const quizStages = [
         {
-            question: "Proses tumbuhan menghasilkan makanan sendiri dengan bantuan sinar matahari disebut?",
-            options: ["Respirasi", "Fotosintesis", "Transpirasi", "Oksidasi"],
-            answer: 1 
+            title: "Stage 1",
+            desc: "Mengenali informasi dasar tanaman",
+            questions: [
+                { q: "Pohon mangga memiliki nama ilmiah...", options: ["Arecaceae", "Mangifera indica", "Cocos nucifera", "Ficus benjamina"], answer: 1 },
+                { q: "Pohon palm banyak ditemukan di daerah...", options: ["Kutub", "Gurun", "Tropis", "Pegunungan salju"], answer: 2 },
+                { q: "Bagian pohon palm yang menjadi ciri khas adalah...", options: ["Memiliki banyak cabang besar", "Daunnya tumbuh di bagian atas batang", "Batangnya menjalar", "Tidak memiliki akar"], answer: 1 },
+                { q: "Pohon mangga sering ditanam di pekarangan rumah karena...", options: ["Dapat membuat lingkungan terasa lebih asri", "Menghasilkan batu bara", "Tidak membutuhkan air", "Dapat menyala di malam hari"], answer: 0 }
+            ]
         },
         {
-            question: "Pohon Palem Raja termasuk ke dalam jenis tumbuhan berkeping satu yang disebut...",
-            options: ["Dikotil", "Paku-pakuan", "Monokotil", "Karnivora"],
-            answer: 2
+            title: "Stage 2",
+            desc: "Memahami fungsi dan manfaat tanaman",
+            questions: [
+                { q: "Buah mangga kaya akan vitamin berikut, kecuali...", options: ["Vitamin C", "Vitamin A", "Vitamin E", "Vitamin K"], answer: 3 },
+                { q: "Salah satu manfaat pohon palm adalah...", options: ["Menghasilkan batu bara", "Memperindah lingkungan", "Mengurangi curah hujan", "Menghasilkan listrik"], answer: 1 },
+                { q: "Baik pohon mangga maupun palm memiliki manfaat yang sama, yaitu...", options: ["Menghasilkan oksigen", "Menghasilkan emas", "Menghasilkan minyak bumi", "Menghasilkan garam"], answer: 0 },
+                { q: "Selain menghasilkan oksigen, pohon mangga juga membantu...", options: ["Menyerap karbon dioksida", "Menghasilkan plastik", "Menurunkan gravitasi bumi", "Menghasilkan bahan bakar"], answer: 0 }
+            ]
         },
         {
-            question: "Bagian tanaman Mangga yang berfungsi menyerap air dan mineral dari tanah adalah?",
-            options: ["Daun", "Batang", "Akar", "Bunga"],
-            answer: 2
+            title: "Stage 3",
+            desc: "Membandingkan 2 tanaman",
+            questions: [
+                { q: "Tanaman yang sering ditanam karena menghasilkan buah manis adalah...", options: ["Palm", "Mangga", "Keduanya tidak berbuah", "Semua salah"], answer: 1 },
+                { q: "Tanaman yang umumnya memiliki batang lurus tanpa cabang adalah...", options: ["Mangga", "Palm", "Keduanya", "Tidak ada"], answer: 1 },
+                { q: "Manakah pernyataan yang benar?", options: ["Mangga hanya berfungsi sebagai tanaman hias", "Palm menghasilkan buah mangga", "Mangga dan palm membantu menjaga kualitas udara", "Palm tidak memiliki akar"], answer: 2 },
+                { q: "Manakah pasangan yang tepat?", options: ["Mangga – Mangifera indica", "Palm – Mangifera indica", "Mangga – Arecaceae saja sebagai nama spesies", "Palm – Harum Manis"], answer: 0 }
+            ]
+        },
+        {
+            title: "Stage 4",
+            desc: "Memahami tahapan pertumbuhan",
+            questions: [
+                { q: "Tahap pertama pertumbuhan pohon mangga dimulai ketika...", options: ["Buah dipanen", "Biji menyerap air dan berkecambah", "Daun menguning", "Bunga mekar"], answer: 1 },
+                { q: "Setelah bunga pohon mangga mengalami penyerbukan, yang akan berkembang adalah...", options: ["Akar", "Daun", "Batang", "Buah mangga"], answer: 3 },
+                { q: "Urutan pertumbuhan pohon palm yang benar adalah...", options: ["Bunga → Benih → Akar → Bibit", "Benih → Akar dan Tunas → Bibit → Pohon Dewasa", "Pohon Dewasa → Benih → Bibit", "Daun → Buah → Benih"], answer: 1 },
+                { q: "Pada tahap bibit, pohon mangga biasanya telah memiliki...", options: ["Daun-daun kecil", "Buah matang", "Bunga yang mekar", "Batang yang sangat besar"], answer: 0 }
+            ]
+        },
+        {
+            title: "Stage 5 - Final",
+            desc: "Memerlukan ketelitian dan pemahaman lebih dalam",
+            questions: [
+                { q: "Mengapa akar pohon mangga penting bagi lingkungan?", options: ["Membuat buah lebih manis", "Menarik serangga", "Membantu memperkuat struktur tanah dan mengurangi erosi", "Menghasilkan oksigen lebih banyak"], answer: 2 },
+                { q: "Manakah informasi yang merupakan fun fact tentang pohon palm?", options: ["Palm menghasilkan vitamin C tinggi", "Palm dapat hidup hingga ratusan tahun & tumbuh tanpa cabang", "Palm menghasilkan mangga harum manis", "Palm hanya hidup selama satu musim"], answer: 1 },
+                { q: "Manakah manfaat yang dimiliki baik pohon mangga maupun pohon palm?\n1.Oksigen 2.Kualitas udara 3.Kestabilan tanah 4.Buah mangga", options: ["1, 2, dan 3", "1 dan 4", "2 dan 4", "1, 2, 3, dan 4"], answer: 0 },
+                { q: "Berdasarkan materi, manakah pernyataan yang paling tepat?", options: ["Mangga berbuah kaya vitamin, beberapa jenis palm hasilkan buah yg dimanfaatkan manusia.", "Palm tidak menghasilkan bunga.", "Mangga tidak memiliki fungsi bagi lingkungan.", "Palm hanya tanaman hias tanpa manfaat lain."], answer: 0 }
+            ]
         }
     ];
 
+    let currentStageIndex = 0;
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;
 
-    function startQuiz() {
+    // Memulai pop-up perkenalan Stage
+    function startStageIntro() {
+        currentStageIndex = parseInt(sessionStorage.getItem('currentQuizStage')) || 0;
+        
+        if (currentStageIndex >= quizStages.length) {
+            alert("Luar Biasa! Kamu telah menaklukkan semua Stage Trivia Hijau.");
+            return;
+        }
+        
+        const stageData = quizStages[currentStageIndex];
+        document.getElementById('stage-intro-title').innerText = stageData.title;
+        document.getElementById('stage-intro-desc').innerText = stageData.desc;
+        
+        document.getElementById('stage-intro-modal').classList.remove('hidden');
+    }
+
+    // Memulai Quiz dari Pop-up Stage
+    function beginQuiz() {
+        document.getElementById('stage-intro-modal').classList.add('hidden');
         currentQuestionIndex = 0;
         correctAnswersCount = 0;
         switchTab('quiz');
@@ -920,14 +985,17 @@
     }
 
     function loadQuestion() {
-        if (currentQuestionIndex >= quizData.length) {
+        const stageData = quizStages[currentStageIndex];
+        
+        // Cek jika pertanyaan habis
+        if (currentQuestionIndex >= stageData.questions.length) {
             showQuizResult();
             return;
         }
 
-        const currentQ = quizData[currentQuestionIndex];
-        document.getElementById('quiz-progress').innerText = `${currentQuestionIndex + 1} / ${quizData.length}`;
-        document.getElementById('quiz-question').innerText = currentQ.question;
+        const currentQ = stageData.questions[currentQuestionIndex];
+        document.getElementById('quiz-progress').innerText = `${currentQuestionIndex + 1} / ${stageData.questions.length}`;
+        document.getElementById('quiz-question').innerText = currentQ.q;
 
         const optionsContainer = document.getElementById('quiz-options');
         optionsContainer.innerHTML = ''; 
@@ -936,13 +1004,12 @@
             const btn = document.createElement('button');
             btn.className = "w-full p-3.5 text-left text-xs font-semibold text-gray-700 bg-gray-50 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-100 rounded-xl transition-colors active:scale-[0.98]";
             btn.innerText = opt;
-            btn.onclick = () => checkAnswer(index);
+            btn.onclick = () => checkAnswer(index, currentQ.answer);
             optionsContainer.appendChild(btn);
         });
     }
 
-    function checkAnswer(selectedIndex) {
-        const correctIndex = quizData[currentQuestionIndex].answer;
+    function checkAnswer(selectedIndex, correctIndex) {
         if (selectedIndex === correctIndex) {
             correctAnswersCount++;
         }
@@ -950,48 +1017,56 @@
         loadQuestion();
     }
 
+    // Evaluasi Lulus (4/4) atau Gagal (<4)
     function showQuizResult() {
-        const optionsContainer = document.getElementById('quiz-options');
-        let rewardXP = correctAnswersCount * 10; 
-
-        document.getElementById('quiz-progress').innerText = "SELESAI";
-        document.getElementById('quiz-question').innerText = `Kuis Selesai!\nKamu menjawab benar ${correctAnswersCount} dari ${quizData.length} pertanyaan.`;
+        const totalQuestions = quizStages[currentStageIndex].questions.length;
         
-        let resultHTML = `
-            <div class="text-center mb-6 bg-amber-50 p-4 rounded-xl border border-amber-100">
-                <p class="text-xs text-amber-600 font-medium mb-1">Total Hadiah:</p>
-                <span class="text-amber-500 font-extrabold text-2xl flex items-center justify-center gap-1">
-                    <span class="material-symbols-outlined text-3xl">star</span> +${rewardXP} XP
-                </span>
-            </div>
-            <button onclick="claimQuizReward(${rewardXP})" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
-                Klaim XP & Kembali
-            </button>
-        `;
-
-        optionsContainer.innerHTML = resultHTML;
+        if (correctAnswersCount === totalQuestions) {
+            // LULUS (Semua Benar)
+            document.getElementById('quiz-reward-text').innerHTML = `<span class="material-symbols-outlined text-base">star</span> +100 XP`;
+            document.getElementById('quiz-reward-modal').classList.remove('hidden');
+        } else {
+            // GAGAL (Ada yang salah)
+            document.getElementById('fail-score-text').innerText = `${correctAnswersCount} / ${totalQuestions} Benar`;
+            document.getElementById('quiz-fail-modal').classList.remove('hidden');
+        }
     }
 
-    function claimQuizReward(xp) {
-        if (xp > 0) {
-            let currentXP = parseInt(sessionStorage.getItem('userXP')) || 0;
-            let oldLevel = calculateLevel(currentXP); 
-            
-            currentXP += xp;
-            if (currentXP > 600) currentXP = 600;
-            sessionStorage.setItem('userXP', currentXP.toString());
-            syncGamificationUI();
-            
-            let newLevel = calculateLevel(currentXP); 
-            if (oldLevel !== newLevel) {
-                pendingLevelUp = newLevel; 
-            }
-            
-            document.getElementById('quiz-reward-text').innerHTML = `<span class="material-symbols-outlined text-base">star</span> +${xp} XP`;
-            document.getElementById('quiz-reward-modal').classList.remove('hidden');
+    // Klaim Reward jika Lulus (Dipanggil dari tombol modal)
+    function claimQuizReward() {
+        document.getElementById('quiz-reward-modal').classList.add('hidden');
+        
+        let currentXP = parseInt(sessionStorage.getItem('userXP')) || 0;
+        let oldLevel = calculateLevel(currentXP); 
+        
+        currentXP += 100; // Tiap stage 100 XP
+        if (currentXP > 600) currentXP = 600;
+        sessionStorage.setItem('userXP', currentXP.toString());
+        
+        // Lanjut ke stage berikutnya
+        sessionStorage.setItem('currentQuizStage', (currentStageIndex + 1).toString());
+        
+        syncGamificationUI();
+        
+        let newLevel = calculateLevel(currentXP); 
+        if (oldLevel !== newLevel) {
+            document.getElementById('level-up-name').innerText = newLevel;
+            document.getElementById('level-up-modal').classList.remove('hidden');
         } else {
             switchTab('home');
         }
+    }
+
+    // Ulangi Quiz jika Gagal (Dipanggil dari tombol modal fail)
+    function retryQuiz() {
+        document.getElementById('quiz-fail-modal').classList.add('hidden');
+        beginQuiz();
+    }
+
+    // Batal Quiz dari modal fail
+    function closeFailModal() {
+        document.getElementById('quiz-fail-modal').classList.add('hidden');
+        switchTab('home');
     }
   </script>
 </body>
