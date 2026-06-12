@@ -31,6 +31,7 @@
 </head>
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
+  <!-- LOADING SCREEN -->
   <div id="loading-screen" class="fixed inset-0 z-[200] bg-[#2A5C43] flex flex-col items-center justify-center transition-opacity duration-700">
     <div class="animate-pulse flex flex-col items-center">
         <img src="LOGO_WANANSASTRA.png" alt="Logo" class="w-48 mb-4">
@@ -74,6 +75,7 @@
       </div>
     </header>
 
+    <!-- VIEW 1: BERANDA -->
     <main id="home-view" class="view-section flex-1 overflow-y-auto px-6 py-5 space-y-6 no-scrollbar z-10">
       
       <div class="relative rounded-2xl overflow-hidden shadow-md border border-emerald-950/10 group transition-transform duration-300 active:scale-98">
@@ -117,28 +119,29 @@
         </div>
 
         <div class="grid grid-cols-4 gap-3 pt-1">
-          <div id="slot-palm" onclick="alert('Tanaman ini terkunci! Temukan QR-nya untuk membuka.')" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
+          <!-- DIUBAH: Alert diganti menjadi showLockedModal() -->
+          <div id="slot-palm" onclick="showLockedModal()" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
             <div id="icon-palm" class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
               <span class="material-symbols-outlined text-base">lock</span>
             </div>
             <span id="text-palm" class="text-[9px] font-medium text-gray-400 text-center truncate w-full">Belum Ada</span>
           </div>
 
-          <div id="slot-mangga" onclick="alert('Tanaman ini terkunci! Temukan QR-nya untuk membuka.')" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
+          <div id="slot-mangga" onclick="showLockedModal()" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
             <div id="icon-mangga" class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
               <span class="material-symbols-outlined text-base">lock</span>
             </div>
             <span id="text-mangga" class="text-[9px] font-medium text-gray-400 text-center truncate w-full">Belum Ada</span>
           </div>
 
-          <div class="flex flex-col items-center gap-1.5 opacity-50">
+          <div onclick="showLockedModal()" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
             <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
               <span class="material-symbols-outlined text-base">lock</span>
             </div>
             <span class="text-[9px] font-medium text-gray-400">Belum Ada</span>
           </div>
 
-          <div class="flex flex-col items-center gap-1.5 opacity-50">
+          <div onclick="showLockedModal()" class="flex flex-col items-center gap-1.5 opacity-50 cursor-pointer">
             <div class="w-12 h-12 rounded-xl bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-gray-400 shadow-inner">
               <span class="material-symbols-outlined text-base">lock</span>
             </div>
@@ -170,18 +173,20 @@
       </div>
     </main>
 
+    <!-- VIEW 2: TANAMANDEX -->
     <main id="tanamandex-view" class="view-section hidden flex-1 overflow-y-auto px-6 py-5 space-y-4 no-scrollbar z-10">
       <h3 class="text-base font-bold text-gray-800 tracking-wide">Katalog Lengkap TanamanDex</h3>
       <p class="text-xs text-gray-400 -mt-2">Temukan seluruh QR tanaman di lapangan untuk membuka ensiklopedia ini.</p>
 
       <div class="grid grid-cols-2 gap-4 pt-2">
-        <div id="card-dex-palm" onclick="alert('Tanaman ini terkunci! Temukan QR-nya untuk membuka.')" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 opacity-50 cursor-pointer">
+        <!-- DIUBAH: Alert diganti menjadi showLockedModal() -->
+        <div id="card-dex-palm" onclick="showLockedModal()" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 opacity-50 cursor-pointer">
           <span id="card-icon-palm" class="material-symbols-outlined text-4xl text-gray-400">lock</span>
           <h4 id="card-title-palm" class="text-xs font-bold text-gray-400">???</h4>
           <span id="card-badge-palm" class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[8px] font-bold rounded-full">TERKUNCI</span>
         </div>
         
-        <div id="card-dex-mangga" onclick="alert('Tanaman ini terkunci! Temukan QR-nya untuk membuka.')" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 opacity-50 cursor-pointer">
+        <div id="card-dex-mangga" onclick="showLockedModal()" class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center gap-2 opacity-50 cursor-pointer">
           <span id="card-icon-mangga" class="material-symbols-outlined text-4xl text-gray-400">lock</span>
           <h4 id="card-title-mangga" class="text-xs font-bold text-gray-400">???</h4>
           <span id="card-badge-mangga" class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[8px] font-bold rounded-full">TERKUNCI</span>
@@ -189,6 +194,7 @@
       </div>
     </main>
 
+    <!-- VIEW 3: RANKING -->
     <main id="rank-view" class="view-section hidden flex-1 flex-col items-center justify-center px-6 text-center z-10 bg-[#FAFBFB]">
       <div class="w-32 h-32 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
           <span class="material-symbols-outlined text-6xl text-emerald-700 animate-bounce flex items-center justify-center">rocket_launch</span>
@@ -203,6 +209,7 @@
       </button>
     </main>
 
+    <!-- VIEW 4: DETAIL AR -->
     <main id="detail-view" class="view-section hidden flex-1 overflow-y-auto pb-8 flex flex-col z-10 bg-white">
       <div class="w-full h-72 bg-gradient-to-b from-emerald-50 to-white relative flex items-center justify-center">
         <model-viewer id="plant-model" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="https://images.unsplash.com/photo-1545147986-a9d6f2103c59?w=300" shadow-intensity="1" class="w-full h-full">
@@ -230,6 +237,7 @@
       </div>
     </main>
 
+    <!-- VIEW 5: KUIS TRIVIA -->
     <main id="quiz-view" class="view-section hidden flex-1 flex-col px-6 py-8 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <div class="flex items-center justify-between mb-8">
         <button onclick="switchTab('home')" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
@@ -255,6 +263,7 @@
       </div>
     </main>
 
+    <!-- VIEW 6: DAFTAR LEVEL (JENJANG PRESTASI) -->
     <main id="level-view" class="view-section hidden flex-1 flex-col px-6 py-6 z-10 bg-[#FAFBFB] overflow-y-auto no-scrollbar">
       <div class="flex items-center gap-4 mb-6">
         <button onclick="switchTab('home')" class="w-9 h-9 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:bg-gray-50 active:scale-95 transition-all">
@@ -268,10 +277,12 @@
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 relative">
          <div class="absolute left-[37px] top-8 bottom-10 w-0.5 bg-gray-100 z-0"></div>
          <div id="level-list" class="relative z-10 flex flex-col gap-6">
-            </div>
+            <!-- Level items akan dimuat oleh JavaScript -->
+         </div>
       </div>
     </main>
 
+    <!-- MODAL SCANNER -->
     <div id="scanner-container" class="hidden fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4 sm:absolute sm:rounded-3xl">
       <div class="w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl p-4">
           <h3 class="text-sm font-bold text-gray-800 text-center mb-3">Arahkan Kamera ke QR Code</h3>
@@ -285,6 +296,7 @@
       </div>
     </div>
 
+    <!-- MODAL REWARD SCAN TANAMAN -->
     <div id="reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-emerald-100">
@@ -304,6 +316,7 @@
       </div>
     </div>
 
+    <!-- MODAL KUIS REWARD -->
     <div id="quiz-reward-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
         <div class="w-20 h-20 bg-gradient-to-tr from-amber-100 to-orange-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-amber-100">
@@ -323,29 +336,40 @@
       </div>
     </div>
 
+    <!-- MODAL NAIK LEVEL -->
     <div id="level-up-modal" class="hidden fixed inset-0 z-[110] bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center p-4">
       <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
-        
         <div class="w-24 h-24 bg-gradient-to-tr from-amber-200 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border-4 border-white shadow-lg">
           <span class="material-symbols-outlined text-6xl text-amber-600 animate-bounce">military_tech</span>
         </div>
-        
         <h3 class="text-2xl font-extrabold text-gray-800 mb-1">Selamat!</h3>
         <p class="text-xs text-gray-500 mb-2 px-2">Anda telah naik level menjadi:</p>
-        
         <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-xl py-3 mb-6 shadow-sm">
           <p id="level-up-name" class="text-amber-800 font-extrabold text-sm uppercase tracking-widest">
             Nama Level
           </p>
         </div>
-        
         <button onclick="closeLevelUpModal()" class="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl active:scale-95 transition-all text-xs tracking-wide uppercase">
           Lanjutkan Petualangan
         </button>
-
       </div>
     </div>
 
+    <!-- MODAL TANAMAN TERKUNCI (BARU) -->
+    <div id="locked-modal" class="hidden fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+      <div class="bg-white rounded-[2rem] p-6 w-full max-w-[280px] text-center shadow-2xl transform scale-100 transition-transform">
+        <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner border border-gray-100">
+          <span class="material-symbols-outlined text-5xl text-gray-400">lock</span>
+        </div>
+        <h3 class="text-xl font-extrabold text-gray-800 mb-1">Terkunci!</h3>
+        <p class="text-[11px] text-gray-500 mb-6 leading-relaxed px-2">Temukan dan pindai stiker QR Code tanaman ini di dunia nyata untuk membuka informasinya.</p>
+        <button onclick="closeLockedModal()" class="w-full py-3 bg-gray-100 text-gray-600 font-bold rounded-xl shadow-sm hover:bg-gray-200 active:scale-95 transition-all text-xs tracking-wide uppercase">
+          Tutup
+        </button>
+      </div>
+    </div>
+
+    <!-- NAVBAR BAWAH -->
     <nav id="bottom-nav" class="bg-white border-t border-gray-100 flex justify-around items-center py-3 px-6 sticky bottom-0 z-40 rounded-b-3xl">
       <button id="nav-home" onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-0.5 text-emerald-600 font-bold transform scale-105">
         <span class="material-symbols-outlined text-2xl font-fill">home</span>
@@ -374,9 +398,9 @@
     
     let html5QrCode = null;
     let currentPlantId = ""; 
-    let pendingLevelUp = null; // Variabel untuk menyimpan status jika pemain naik level
+    let pendingLevelUp = null;
 
-    // SISTEM RESET OTOMATIS: SELALU KEMBALI KE 0 SAAT DI REFRESH (F5)
+    // SISTEM RESET OTOMATIS
     sessionStorage.setItem('userXP', '0'); 
     sessionStorage.setItem('userLevel', 'Ambassador Tunas');
     sessionStorage.setItem('unlockedPlants', JSON.stringify([])); 
@@ -454,7 +478,6 @@
         document.getElementById('user-level').innerText = calculatedLevelName;
         document.getElementById('dex-count').innerText = `${unlocked.length} / 4 DITEMUKAN`;
 
-        // Render Daftar Level di Halaman Level
         const levelListContainer = document.getElementById('level-list');
         levelListContainer.innerHTML = '';
         
@@ -542,7 +565,7 @@
             sessionStorage.setItem('unlockedPlants', JSON.stringify(unlocked));
             
             let currentXP = parseInt(sessionStorage.getItem('userXP')) || 0;
-            let oldLevel = calculateLevel(currentXP); // Simpan level sebelum XP bertambah
+            let oldLevel = calculateLevel(currentXP); 
             
             currentXP += 100;
             if (currentXP > 500) currentXP = 500;
@@ -550,9 +573,9 @@
             
             syncGamificationUI();
             
-            let newLevel = calculateLevel(currentXP); // Cek level sesudah XP bertambah
+            let newLevel = calculateLevel(currentXP); 
             if (oldLevel !== newLevel) {
-                pendingLevelUp = newLevel; // Tandai jika ada kenaikan level
+                pendingLevelUp = newLevel; 
             }
             
             document.getElementById('reward-modal').classList.remove('hidden');
@@ -562,7 +585,6 @@
     // PENUTUP MODAL XP SCAN
     function closeScanRewardModal() {
         document.getElementById('reward-modal').classList.add('hidden');
-        // Jika ada kenaikan level, munculkan modal selamat setelah XP ditutup
         if (pendingLevelUp) {
             document.getElementById('level-up-name').innerText = pendingLevelUp;
             document.getElementById('level-up-modal').classList.remove('hidden');
@@ -585,10 +607,18 @@
     // PENUTUP MODAL NAIK LEVEL
     function closeLevelUpModal() {
         document.getElementById('level-up-modal').classList.add('hidden');
-        // Jika sedang berada di halaman kuis, kita harus pulang ke beranda
         if (!document.getElementById('quiz-view').classList.contains('hidden')) {
             switchTab('home');
         }
+    }
+
+    // FUNGSI MODAL TANAMAN TERKUNCI
+    function showLockedModal() {
+        document.getElementById('locked-modal').classList.remove('hidden');
+    }
+
+    function closeLockedModal() {
+        document.getElementById('locked-modal').classList.add('hidden');
     }
 
     // LOADING SCREEN LOGIC
@@ -832,16 +862,16 @@
     function claimQuizReward(xp) {
         if (xp > 0) {
             let currentXP = parseInt(sessionStorage.getItem('userXP')) || 0;
-            let oldLevel = calculateLevel(currentXP); // Simpan level sebelum XP bertambah
+            let oldLevel = calculateLevel(currentXP); 
             
             currentXP += xp;
             if (currentXP > 500) currentXP = 500;
             sessionStorage.setItem('userXP', currentXP.toString());
             syncGamificationUI();
             
-            let newLevel = calculateLevel(currentXP); // Cek level setelah XP bertambah
+            let newLevel = calculateLevel(currentXP); 
             if (oldLevel !== newLevel) {
-                pendingLevelUp = newLevel; // Tandai jika ada kenaikan level
+                pendingLevelUp = newLevel; 
             }
             
             document.getElementById('quiz-reward-text').innerHTML = `<span class="material-symbols-outlined text-base">star</span> +${xp} XP`;
